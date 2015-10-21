@@ -21,14 +21,6 @@
     "*"
   ],
   "default_locale": "en",
-  "permissions": {
-    "desktop-notification": {
-      "description": "To show notifications"
-    },
-    "alarms": {
-      "description": "Scheduling alarms"
-    }
-  },
   "locales": {
     "fr": {
       "name": "Modèle d’application pour Firefox OS",
