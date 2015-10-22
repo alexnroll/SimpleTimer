@@ -4,8 +4,8 @@
   "launch_path": "/index.html",
   "description": "Timer simple et efficace",
   "icons": {
-    "16": "/images/logo16.png",
-    "128": "/images/logo16.png"
+	"512": "/images/logo512.png",
+	"128": "/images/logo128.png"
   },
   "developer": {
     "name": "z0bi",
