@@ -72,30 +72,45 @@
 	  </div>
 	  </form>
 
-
-
 		<!-- 
 		Bouton pour Lancer le timer 
 		-->
-		<button type="button" class="btn btn-lg btn-info" onclick="Timer()">Lancer</button>
-        <p class="lead">Plein le cul des applications de timer véreuses sur FirefoxOs, je veux un truc ultra simple et efficace.
-		<br><br>On ne peut même pas rentrer 1min30 sur les timers de Firefox OS, soit c'est 1min, soit 2min, pas entre les deux, c'est quand même merdique non ???
-		z0bi.
-		<br> 
+		<button type="button" class="btn btn-lg btn-info" onclick="Timer()" id="lancer">Lancer</button>
+     
 		
 		<!-- 
-		Le timer se fait ici 
+		Bouton pour arrêter le timer 
+		-->
+		<button type="button" class="btn btn-lg btn-alert" onclick="stop()" id="stop">Stop</button>
+     
+	 
+	    <!-- 
+		Le blabla du mec qui raconte sa life
+		-->
+		<br><br><p class="lead" id="status">
+		Aucun timer en cours.
+		</p>
+	
+		<!-- 
+		Fonctions du timer
 		-->
 		<script> 
+			document.getElementById("stop").disabled = true; // bloque le bouton défaut par défaut
+			
 			function Timer() {
 				var minutes = document.getElementById("minutes").value; 
 				var secondes = document.getElementById("secondes").value;
 				var minMill = minutes * 60 * 1000; // conversion minutes en millisecondes
 				var secMill = secondes * 1000; // conversion secondes en millisecondes
 				var totMill = minMill + secMill; // total de millisecondes pour setTimeout()
-
+		
 				
-				setTimeout(al, totMill); // lancement du timer qui déclenche la fonction al() une fois écoulé.
+				timerVar = setTimeout(al, totMill); // lancement du timer qui déclenche la fonction al() une fois écoulé.
+				
+				document.getElementById("status").innerHTML = "Timer en cours...";
+				document.getElementById("lancer").disabled = true;
+				document.getElementById("stop").disabled = false;
+
 			}
 
 			function al(){	
@@ -107,9 +122,21 @@
 				audio.play();
 
 				alert('Done !\n' + minutes + ' minutes et ' + secondes + ' secondes écoulée(s)' );
+				document.getElementById("lancer").disabled = false;
+				
+				document.getElementById("status").innerHTML = "Aucun timer en cours";
+				
+			}
+			
+			function stop(){
+				clearTimeout(timerVar); // stop le timer en cours
+				document.getElementById("lancer").disabled = false;
+				document.getElementById("lancer").innerHTML = "Timer";
+				document.getElementById("stop").disabled = true;
+				
+				document.getElementById("status").innerHTML = "Aucun timer en cours";
 			}
 </script>
-</p>
       </div>
 
     </div><!-- /.container -->
