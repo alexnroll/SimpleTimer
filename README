@@ -3,6 +3,6 @@ Simple Timer
 This is just a simple timer for FirefoxOS.
 
 Things to improve :
-- Let know the user when the timer is beginned.
+- Let the user know when the timer is beginned.
 - The sound when the timer is done doesn't works on all environements, make sure it's the case.
 - See a progress bar or the time until the timer is done in a dynamic way.
