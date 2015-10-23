@@ -75,7 +75,7 @@
 		<!-- 
 		Bouton pour Lancer le timer 
 		-->
-		<button type="button" class="btn btn-lg btn-info" onclick="Timer()" id="lancer">Lancer</button>
+		<button type="button" class="btn btn-lg btn-info" onclick="Timer(); tm = setInterval(countDown,1000);" id="lancer">Lancer</button>
      
 		
 		<!-- 
@@ -85,17 +85,26 @@
      
 	 
 	    <!-- 
-		Le blabla du mec qui raconte sa life
+		Status du timer
 		-->
 		<br><br><p class="lead" id="status">
 		Aucun timer en cours.
 		</p>
+		
+		 <!-- 
+		Temps restant
+		-->
+		<p class="lead" id="remaining">
+		
+		</p>
 	
 		<!-- 
-		Fonctions du timer
+		Fonctions js du timer
 		-->
 		<script> 
 			document.getElementById("stop").disabled = true; // bloque le bouton défaut par défaut
+			var n = document.getElementById("secondes").value;
+			var n = n + document.getElementById("minutes").value;
 			
 			function Timer() {
 				var minutes = document.getElementById("minutes").value; 
@@ -103,14 +112,12 @@
 				var minMill = minutes * 60 * 1000; // conversion minutes en millisecondes
 				var secMill = secondes * 1000; // conversion secondes en millisecondes
 				var totMill = minMill + secMill; // total de millisecondes pour setTimeout()
-		
 				
 				timerVar = setTimeout(al, totMill); // lancement du timer qui déclenche la fonction al() une fois écoulé.
 				
 				document.getElementById("status").innerHTML = "Timer en cours...";
 				document.getElementById("lancer").disabled = true;
 				document.getElementById("stop").disabled = false;
-
 			}
 
 			function al(){	
@@ -123,9 +130,9 @@
 
 				alert('Done !\n' + minutes + ' minutes et ' + secondes + ' secondes écoulée(s)' );
 				document.getElementById("lancer").disabled = false;
-				
+				document.getElementById("stop").disabled = true;
 				document.getElementById("status").innerHTML = "Aucun timer en cours";
-				
+				document.getElementById("remaining").innerHTML = ""; clearInterval(tm); // efface le temps restant et stop le countdown	
 			}
 			
 			function stop(){
@@ -135,6 +142,21 @@
 				document.getElementById("stop").disabled = true;
 				
 				document.getElementById("status").innerHTML = "Aucun timer en cours";
+				document.getElementById("remaining").innerHTML = ""; clearInterval(tm); // efface le temps restant et stop le countdown
+				
+				clearInterval(tm);
+			}	
+			
+			function countDown(){
+				var minutes = parseInt(document.getElementById("minutes").value); 
+				var mintoSec = minutes * 60; // transforme les minutes en secondes
+				var secondes = parseInt(document.getElementById("secondes").value);
+				var tot = mintoSec + secondes; // total de secondes (minutes + secondes) 
+				n++;
+				if(n == tot){
+					clearInterval(tm);
+				}
+				document.getElementById("remaining").innerHTML = n + "/" + tot + "sec";   
 			}
 </script>
       </div>
