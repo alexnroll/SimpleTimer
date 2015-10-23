@@ -3,4 +3,4 @@ Simple Timer
 This is just a simple timer for FirefoxOS.
 
 Things to improve :
-- Improve the "time remaining" function which is kind of lame right now.
+- Have to refresh the page once a timer is finished to relaunch another. If not, it's kind of messy. Have to fix that.
