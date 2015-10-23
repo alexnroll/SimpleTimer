@@ -123,7 +123,7 @@
 			function al(){	
 				var minutes = document.getElementById("minutes").value;
 				var secondes = document.getElementById("secondes").value;
-				window.navigator.vibrate(30000); // a tester sur un vrai téléphone pour voir si il vibre ou pas.
+				window.navigator.vibrate([1000, 100, 1000, 200, 1000, 200, 1000, 200, 1]); 
 
 				var audio = new Audio('sound/bip.mp3');
 				audio.play();
@@ -143,8 +143,6 @@
 				
 				document.getElementById("status").innerHTML = "Aucun timer en cours";
 				document.getElementById("remaining").innerHTML = ""; clearInterval(tm); // efface le temps restant et stop le countdown
-				
-				clearInterval(tm);
 			}	
 			
 			function countDown(){
@@ -156,7 +154,7 @@
 				if(n == tot){
 					clearInterval(tm);
 				}
-				document.getElementById("remaining").innerHTML = n + "/" + tot + "sec";   
+				document.getElementById("remaining").innerHTML = (tot - n);   
 			}
 </script>
       </div>
